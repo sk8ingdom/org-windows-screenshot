@@ -1,0 +1,38 @@
+#+TITLE:        README for org-windows-screenshot
+#+AUTHOR:       Dominic Surano
+#+EMAIL:        sk8ingdom@gmail.com
+#+DATE:         2016-09-16
+
+* Info
+
+  Org-windows-screenshot is a simple utility to save screenshots from GNU Emacs using the [[https://github.com/npocmaka/batch.scripts][npocmaka's batch.scripts]], specifically [[https://github.com/npocmaka/batch.scripts/blob/master/hybrids/.net/c/screenCapture.bat][screenCapture.bat]], which is required to use the function.
+
+* Setup
+
+  Download =org-windows-screenshot.el= to a directory in your =load-path= and add the following to your =.emacs= configuration:
+
+  #+BEGIN_SRC emacs-lisp
+    (require 'org-windows-screenshot)
+    (setq org-windows-screenshot-command
+          "C:/path/to/screenCapture.bat")
+    (setq org-windows-screenshot-directory "C:/where/you/want/to/save/screenshots/")
+    (global-set-key "\C-cs" 'org-windows-screenshot)
+  #+END_SRC
+
+  where the directories have been modified to fit your specific configuration.
+
+* Usage
+
+  If you're using the key-binding in the setup above, just press =C-c C-s= which will prompt for the specific window you want to capture. The name doesn't have to be exact, just close.
+
+  For example, typing =Emacs <RET>= will save JUST your Emacs window. If you leave the prompt blank, it will capture the entire screen, although this only seems to work for the primary monitor if you're using a multi-monitor setup which might be a limitation of =screenCapture.bat=.
+
+  Upon successful completion, an =org-link= to the screenshot will be added to =org-stored-links= which can be inserted with =org-insert-link= which, for me, is bound to =C-c C-l=. The link is in the following form:
+
+  #+BEGIN_EXAMPLE
+  [[C:/path/to/picture/YYY-MM-DD-HH-MM-SS.png][YYY-MM-DD-HH-MM-SS.png]]
+  #+END_EXAMPLE
+
+* License
+
+  This software is licenced under the GNU General Public License which is included, and should be distributed with, the software. [[https://github.com/npocmaka/batch.scripts][batch.scripts]] is licensed under the [[https://github.com/npocmaka/batch.scripts/blob/master/LICENSE][MIT License]].
