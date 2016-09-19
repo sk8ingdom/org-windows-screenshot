@@ -60,6 +60,8 @@
 
 ;;; Code:
 
+(require 'org)
+
 (defvar org-windows-screenshot-command nil
   "File path location of screenCapture.bat utility unless it's already in
 %PATH%.")
